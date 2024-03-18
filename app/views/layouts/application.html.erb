@@ -12,6 +12,11 @@
 
   <body>
     <%= render "shared/navbar" %>
+    <% if alert.present? %>
+      <div class="alert alert-danger" role="alert">
+        <%= alert %>
+      </div>
+    <% end %>
     <%= yield %>
   </body>
 </html>
