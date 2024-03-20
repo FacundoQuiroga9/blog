@@ -4,8 +4,12 @@
 <% end %>
 
 <% @posts.each do |post| %>
-  <div class="post">
-    <h2><%= link_to "#{post.title}", post_path(post) %></h2>
-    <p>Publicado por <%= post.user.username %> el <%= post.created_at.strftime("%d/%m/%Y") %></p>
-  </div>
+  <div class="card" style="width: 18rem;">
+    <%= image_tag 'img-placeholder.jpeg', class: "card-img-top", alt: "Imagen de marcador de posición" %>
+    <div class="card-body">
+      <p class="card-text"><%= post.title %></p>
+      <p>Publicado por <%= post.user.username %> el <%= post.created_at.strftime("%d/%m/%Y") %></p>
+      <%= link_to "Leer", post_path(post) %>
+    </div>
+</div>
 <% end %>
