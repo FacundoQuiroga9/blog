@@ -2,14 +2,19 @@
  <% if user_signed_in? %>
 <%= link_to "Crear Nuevo Post", new_post_path, class: "btn btn-primary" %>
 <% end %>
-
-<% @posts.each do |post| %>
-  <div class="card" style="width: 18rem;">
-    <%= image_tag 'img-placeholder.jpeg', class: "card-img-top", alt: "Imagen de marcador de posición" %>
-    <div class="card-body">
-      <p class="card-text"><%= post.title %></p>
-      <p>Publicado por <%= post.user.username %> el <%= post.created_at.strftime("%d/%m/%Y") %></p>
-      <%= link_to "Leer", post_path(post) %>
-    </div>
+<div class="container">
+  <div class="row">
+    <% @posts.each do |post| %>
+      <div class="col-md-3 mb-4">
+        <div class="card">
+          <%= image_tag 'img-placeholder.jpeg', class: "card-img-top", alt: "Imagen de marcador de posición" %>
+          <div class="card-body">
+            <p class="card-text"><%= post.title %></p>
+            <p>Publicado por <%= post.user.username %> el <%= post.created_at.strftime("%d/%m/%Y") %></p>
+            <%= link_to "Leer", post_path(post), class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
-<% end %>
