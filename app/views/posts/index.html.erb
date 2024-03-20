@@ -1,20 +1,29 @@
-<h1>Lista de Posts</h1>
- <% if user_signed_in? %>
-<%= link_to "Crear Nuevo Post", new_post_path, class: "btn btn-primary" %>
-<% end %>
+
 <div class="container">
-  <div class="row">
-    <% @posts.each do |post| %>
-      <div class="col-md-3 mb-4">
-        <div class="card">
+  <div class="row align-items-center">
+    <div class="col-6">
+      <h1 class="my-5">Bienvenido</h1>
+    </div>
+
+ <% if user_signed_in? %>
+ <div class="col-6 d-flex justify-content-end">
+  <%= link_to "Publicar", new_post_path, class: "btn btn-danger" %>
+ </div>
+<% end %>
+  </div>
+
+<div class="row">
+  <% @posts.each do |post| %>
+    <div class="col-md-3 mb-4">
+      <div class="card">
+        <%= link_to post_path(post), class: "card-link" do %>
           <%= image_tag 'img-placeholder.jpeg', class: "card-img-top", alt: "Imagen de marcador de posición" %>
           <div class="card-body">
-            <p class="card-text"><%= post.title %></p>
+            <p class="card-text fw-bold fs-5"><%= post.title %></p>
             <p>Publicado por <%= post.user.username %> el <%= post.created_at.strftime("%d/%m/%Y") %></p>
-            <%= link_to "Leer", post_path(post), class: "btn btn-primary" %>
           </div>
-        </div>
+        <% end %>
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 </div>

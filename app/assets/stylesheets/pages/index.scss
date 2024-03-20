@@ -1,0 +1,8 @@
+.card-link {
+  color: inherit; /* Utiliza el color de texto predeterminado */
+  text-decoration: none; /* Elimina el subrayado del texto */
+}
+
+.card-link:hover {
+  text-decoration: none; /* No subrayar en el hover */
+}
