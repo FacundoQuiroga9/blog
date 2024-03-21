@@ -11,6 +11,6 @@ Rails.application.routes.draw do
   resources :posts
 
   resources :users do
-    get 'my_posts', to: 'posts#user_posts', on: :member
+    get 'user_posts', to: 'posts#user_posts', on: :member
   end
 end

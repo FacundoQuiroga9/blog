@@ -1,12 +1,20 @@
 <div class="container p-0 ">
   <div class="mt-5 py-2 px-5 box-title">
-    <h1 class="m-0">Mis publicaciones</h1>
+    <% if current_user == @user %>
+      <h1 class="m-0">Mis publicaciones</h1>
+    <% else %>
+      <h1 class="m-0">Publicaciones de <%= @user.username %></h1>
+    <% end %>
   </div>
 
   <% @posts.each do |post| %>
-    <div class="box-post py-2 px-5">
-      <p class="fs-3"><%= post.title %></p>
-      <p><%= post.created_at.strftime("%d/%m/%Y") %></p>
-    </div>
+    <%= link_to post_path(post), class: "box-post-link" do %>
+      <div class="box-post py-2 px-5">
+        <p class="fs-3"><%= post.title %></p>
+        <p><%= post.created_at.strftime("%d/%m/%Y") %></p>
+      </div>
+    <% end %>
   <% end %>
+
+
 </div>

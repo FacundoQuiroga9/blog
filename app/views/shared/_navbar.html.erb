@@ -19,7 +19,7 @@
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                  <h6><%= "#{current_user.username}"%></h6>
                 <%= link_to "Perfil", "#", class: "dropdown-item nav-link" %>
-                <%= link_to "Mis publicaciones", my_posts_user_path(current_user), class: "dropdown-item nav-link" %>
+                <%= link_to "Mis publicaciones", user_posts_user_path(current_user), class: "dropdown-item nav-link" %>
                 <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete, class: "dropdown-item nav-link", data: {turbo_method: :delete} %>
               </div>
           </li>

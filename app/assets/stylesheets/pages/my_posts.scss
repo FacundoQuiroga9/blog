@@ -3,10 +3,43 @@
   background-color: #E72326;
   color: white;
   border-radius: 1rem 1rem 0 0;
-  overflow: hidden;
 }
 
 .box-post{
   border: 1px solid black;
   background: linear-gradient(to top, #eeeeee , #FFFFFF 30%);
+  z-index: 1;
+  position: relative;
+}
+
+.box-post > p{
+  margin-bottom: 5px;
+}
+
+.box-post::before{
+  background: linear-gradient(to top, #9c3233 , #df474a 30%);
+  color: white;
+  position: absolute;
+  content: '';
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  transition: opacity 0.15s linear;
+  opacity: 0;
+}
+
+.box-post:hover::before{
+  opacity: 1;
+}
+.box-post:hover{
+  color: white;
+}
+
+.box-post-link {
+  text-decoration: none; /* Elimina la subrayado del enlace */
+  color: inherit; /* Hereda el color del texto del elemento padre */
+  cursor: pointer; /* Cambia el cursor al pasar el ratón sobre el enlace */
+  display: block; /* Hace que el enlace se comporte como un contenedor de bloque */
 }
