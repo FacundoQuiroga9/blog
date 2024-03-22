@@ -29,3 +29,16 @@
 
 en:
   hello: "Hello world"
+  errors:
+    messages:
+      blank: "no debe estar vacīo"
+  activerecord:
+    attributes:
+      post:
+        title: "Título"
+        content: "Contenido"
+  helpers:
+    label:
+      post:
+        title: "Título"
+        content: "Contenido"
