@@ -19,8 +19,8 @@
         <%= link_to post_path(post), class: "card-link" do %>
           <%= image_tag 'img-placeholder.jpeg', class: "card-img-top", alt: "Imagen de marcador de posición" %>
           <div class="card-body">
-            <p class="card-text fw-bold fs-5"><%= post.title %></p>
-            <p>Publicado por <%= post.user.username %> el <%= post.created_at.strftime("%d/%m/%Y") %></p>
+            <p class="card-text fw-bold fs-6"><%= post.title %></p>
+            <p class="card-info">Publicado por <%= link_to post.user.username, user_posts_user_path(post.user), class: "user-link" %></p>
           </div>
         <% end %>
       </div>
