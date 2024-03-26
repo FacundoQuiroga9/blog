@@ -10,8 +10,8 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
-          <li class="nav-item active">
-            <%= link_to "Inicio", "/", class: "nav-link" %>
+          <li class="nav-item active align-self-center">
+            <%= link_to "Inicio", "/", class: "nav-li" %>
           </li>
           <% if user_signed_in? %>
             <li class="nav-item dropdown">
@@ -24,11 +24,11 @@
               </div>
           </li>
           <% else %>
-            <li class="nav-item">
-              <%= link_to "Registrarse", new_user_registration_path, class: "nav-link" %>
+            <li class="nav-item align-self-center">
+              <%= link_to "Registrarse", new_user_registration_path, class: "nav-li" %>
             </li>
-            <li class="nav-item">
-              <%= link_to "Iniciar sesión", new_user_session_path, class: "nav-link" %>
+            <li class="nav-item align-self-center">
+              <%= link_to "Iniciar sesión", new_user_session_path, class: "nav-li" %>
             </li>
           <% end %>
       </ul>

@@ -1,0 +1,25 @@
+.login-title{
+  font-size: 3rem;
+
+}
+
+.btn-login{
+  width: 100%;
+  background-color: #E72326;
+  color: white;
+  margin: 1rem 0;
+}
+
+.btn-login:hover{
+  border: 1px solid #E72326;
+  color: #E72326;
+  background-color: white;
+}
+
+.btn-password{
+  text-decoration: none;
+  color: #E72326;
+  font-weight: bold;
+  font-style: italic;
+  text-decoration: underline;
+}
