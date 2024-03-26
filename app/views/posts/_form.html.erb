@@ -15,14 +15,17 @@
     <%= form.text_field :title, class: "form-control" %>
   </div>
 
+
   <div class="form-group my-3">
-    <%= form.label :content, "Contenido *" %>
-    <%= form.text_area :content, class: "form-control" %>
+    <%= form.label :image, "Imagen de portada" %>
+    <%= form.file_field :image, class: "form-control" %>
   </div>
 
   <div class="form-group my-3">
     <%= form.label :description, "Descripción *" %>
     <%= form.rich_text_area :description, class: "form-control form-textarea" %>
   </div>
+
+
   <%= form.submit "Publicar", class: "btn btn-success" %>
 <% end %>

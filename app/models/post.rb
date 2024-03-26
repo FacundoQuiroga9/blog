@@ -1,9 +1,8 @@
 class Post < ApplicationRecord
   has_rich_text :description
   belongs_to :user
-  has_many_attached :images 
+  has_one_attached :image
 
 
   validates :title, presence: true
-  validates :content, presence: true
 end

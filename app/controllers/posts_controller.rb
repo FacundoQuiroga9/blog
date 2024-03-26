@@ -21,6 +21,7 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
+      @post.image.attach(params[:post][:image]) if params[:post][:image].present?
       redirect_to @post, notice: 'Post creado exitosamente.'
     else
       render :new
@@ -38,16 +39,17 @@ class PostsController < ApplicationController
 
 
   def update
-    @post
-    unless @post.user == current_user
-      flash[:alert] = "No tienes permiso para editar este post."
-      redirect_to @post
-    else
+    @post = Post.find(params[:id])
+    if @post.user == current_user
       if @post.update(post_params)
+        @post.image.attach(params[:post][:image]) if params[:post][:image].present?
         redirect_to @post, notice: 'Post actualizado exitosamente.'
       else
         render :edit
       end
+    else
+      flash[:alert] = "No tienes permiso para editar este post."
+      redirect_to @post
     end
   end
 
@@ -71,7 +73,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :content, :description)
+    params.require(:post).permit(:title, :description, :image)
   end
 
   def authorize_user!

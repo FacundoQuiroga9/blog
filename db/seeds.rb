@@ -19,7 +19,6 @@ post_titles = [
 post_titles.each do |title|
   Post.create(
     title: title,
-    content: Faker::Lorem.paragraphs(number: rand(3..6)).join("\n"),
     user_id: user.id,
     created_at: Faker::Time.backward(days: 60)
   )

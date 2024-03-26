@@ -1,6 +1,9 @@
 <div class="container mt-5">
   <h2><%= @post.title %></h2>
-    <p class="mt-5"><%= simple_format(@post.content) %></p>
+    <% if @post.image.present? %>
+      <%= image_tag @post.image, class: "show-image" %>
+    <% end %>
+
     <p class="mt-5"><%= @post.description %></p>
     <p>Publicado el: <%= @post.created_at.strftime("%d/%m/%Y") %> por <%= link_to @post.user.username, user_posts_user_path(@post.user), class: "user-link" %></p>
     <% if user_signed_in? && @post.user == current_user %>
