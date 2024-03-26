@@ -16,7 +16,7 @@
           <% if user_signed_in? %>
             <li class="nav-item dropdown">
               <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle ", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <div class="dropdown-menu dropdown-menu-end p-3" aria-labelledby="navbarDropdown">
                  <h6><%= "#{current_user.username}"%></h6>
                 <%= link_to "Perfil", "#", class: "dropdown-item nav-link" %>
                 <%= link_to "Mis publicaciones", user_posts_user_path(current_user), class: "dropdown-item nav-link" %>

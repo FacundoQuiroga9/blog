@@ -17,5 +17,10 @@
 }
 
 .nav-link{
-  color: red;
+  color: #E72326;
+  border-radius: 4px;
+}
+.nav-link:hover{
+  color: white;
+  background-color: #E72326;
 }
