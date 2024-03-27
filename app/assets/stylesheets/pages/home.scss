@@ -1,0 +1,31 @@
+.carousel-olsc{
+  height: 600px;
+  overflow: hidden;
+  margin: 0;
+}
+
+.img-map{
+  height: 600px;
+}
+
+.img-bar{
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(1); /* Invierte el color del icono para que se vea claro en el fondo oscuro */
+  transform: scale(2);
+}
+
+.carousel-control-next, .carousel-control-prev{
+  height: 50px;
+  align-self: center;
+  background-color: transparent;
+  width: 50px;
+  margin: 0;
+}

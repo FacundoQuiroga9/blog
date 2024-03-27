@@ -13,6 +13,9 @@
           <li class="nav-item active align-self-center">
             <%= link_to "Inicio", "/", class: "nav-li" %>
           </li>
+          <li class="nav-item active align-self-center">
+            <%= link_to "Noticias", posts_path, class: "nav-li" %>
+          </li>
           <% if user_signed_in? %>
             <li class="nav-item dropdown">
               <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle ", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>

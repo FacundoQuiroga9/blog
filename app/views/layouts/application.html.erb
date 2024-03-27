@@ -12,7 +12,7 @@
 
   </head>
 
-  <body>
+  <body id="body">
     <%= render "shared/navbar" %>
     <% if alert.present? %>
       <div class="alert alert-danger" role="alert">
@@ -20,5 +20,6 @@
       </div>
     <% end %>
     <%= yield %>
+    <%= render "shared/footer" %>
   </body>
 </html>
