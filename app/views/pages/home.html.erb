@@ -1,20 +1,53 @@
-<div class="container">
-  <div id="carouselExample" class="carousel slide carousel-olsc">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-          <%= image_tag "mapa argentina.png", class: "img-map"%>
-      </div>
-      <div class="carousel-item">
-          <%= image_tag "chicken bross.jpg", class: "img-bar"%>
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
+<div class="container home-container">
+
+  <%# ---------------------------------carousel--------------------------------------------- %>
+
+  <div id="carouselExampleIndicators" class="carousel slide carousel-olsc">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
   </div>
+  <div class="carousel-inner">
+    <% @posts.each_with_index do |post, index| %>
+      <div class="carousel-item <%= 'active' if index == 0 %>">
+        <%= image_tag post.image, class: "d-block w-100 img-carousel" %>
+        <div class="carousel-caption d-none d-md-block">
+          <h5><%= post.title %></h5>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <%= image_tag "prev-arrow.png", class: "arrow-button"%>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <%= image_tag "next-arrow.png", class: "arrow-button"%>
+  </button>
+</div>
+
+<%# --------------------------------------final carousel--------------------------------------- %>
+
+<div class="home-info-container justify-content-between">
+  <div class="map-container d-flex justify-content-center">
+    <%= image_tag "mapa argentina.png", class: "img-map"%>
+  </div>
+  <div class="liverpool-cards">
+    <div class="card-category card-staff">
+      Staff
+    </div>
+    <div class="card-category card-team" >
+      Equipo
+    </div>
+    <div class="card-category card-blog">
+      Blog
+    </div>
+    <div class="card-category card-contact">
+      Contacto
+    </div>
+  </div>
+
+</div>
 </div>

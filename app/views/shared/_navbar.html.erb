@@ -14,7 +14,16 @@
             <%= link_to "Inicio", "/", class: "nav-li" %>
           </li>
           <li class="nav-item active align-self-center">
-            <%= link_to "Noticias", posts_path, class: "nav-li" %>
+            <%= link_to "Blog", posts_path, class: "nav-li" %>
+          </li>
+          <li class="nav-item active align-self-center">
+            <%= link_to "Staff", posts_path, class: "nav-li" %>
+          </li>
+          <li class="nav-item active align-self-center">
+            <%= link_to "Equipo", posts_path, class: "nav-li" %>
+          </li>
+          <li class="nav-item active align-self-center">
+            <%= link_to "Contacto", posts_path, class: "nav-li" %>
           </li>
           <% if user_signed_in? %>
             <li class="nav-item dropdown">
