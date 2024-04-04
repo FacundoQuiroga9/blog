@@ -1,4 +1,4 @@
-body{
+#body{
   font-family: "Bebas Neue", sans-serif;
 }
 .home-container{
@@ -15,14 +15,22 @@ body{
 .carousel-olsc{
   overflow: hidden;
   margin: 0;
-  height: 700px;
+  height: 500px;
 }
 
 .img-carousel{
   object-fit: cover;
+  object-position: center;
   height: 700px;
 }
 
+.carousel-item{
+  position: relative;
+}
+.carousel-caption{
+  position: absolute;
+  top: 300px;
+}
 .carousel-olsc h5{
   font-size: 2rem;
   background-color: rgba(0, 0, 0, 0.626);
@@ -83,7 +91,7 @@ display: flex;
   justify-content: center;
   align-items: center;
   color: white;
-  font-size: 24px;
+  font-size: 32px;
   font-weight: bold;
   text-shadow: 1px 1px 3px rgb(0, 0, 0);
   border-radius: 5px;

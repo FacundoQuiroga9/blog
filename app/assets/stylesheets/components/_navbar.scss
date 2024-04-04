@@ -1,7 +1,12 @@
+.navbar-container{
+  z-index: 999999;
+  position: sticky !important;
+  top: 0;
+}
 .navbar-lewagon {
+  height: 100px;
   justify-content: space-between;
   background: white;
-  box-shadow: 2px 2px 2px 1px rgb(217, 216, 216);
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -39,4 +44,20 @@
 
 .avatar:hover{
   cursor: pointer;
+}
+
+.flag-container{
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 2px 2px 1px rgb(146, 203, 221);
+}
+.bluelight-line, .white-line{
+  height: 4px;
+  width: 100%;
+}
+.bluelight-line{
+  background-color: deepskyblue;
+}
+.white-line{
+  background-color: white;
 }
