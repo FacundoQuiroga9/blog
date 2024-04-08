@@ -18,13 +18,13 @@
             <%= link_to "Blog", posts_path, class: "nav-li" %>
           </li>
           <li class="nav-item active align-self-center">
-            <%= link_to "Staff", posts_path, class: "nav-li" %>
+            <%= link_to "Staff", staff_path, class: "nav-li" %>
           </li>
           <li class="nav-item active align-self-center">
-            <%= link_to "Equipo", posts_path, class: "nav-li" %>
+            <%= link_to "Equipo", team_path, class: "nav-li" %>
           </li>
           <li class="nav-item active align-self-center">
-            <%= link_to "Contacto", posts_path, class: "nav-li" %>
+            <%= link_to "Contacto", contact_path, class: "nav-li" %>
           </li>
           <% if user_signed_in? %>
             <li class="nav-item dropdown">

@@ -34,18 +34,29 @@
     <%= image_tag "mapa argentina.png", class: "img-map"%>
   </div>
   <div class="liverpool-cards">
+    <%= link_to staff_path, class: "link-card" do %>
     <div class="card-category card-staff">
       Staff
     </div>
+    <% end %>
+
+    <%= link_to team_path, class: "link-card" do %>
     <div class="card-category card-team" >
       Equipo
     </div>
+    <% end %>
+
+    <%= link_to posts_path, class: "link-card" do %>
     <div class="card-category card-blog">
       Blog
     </div>
+    <% end %>
+
+    <%= link_to contact_path, class: "link-card" do %>
     <div class="card-category card-contact">
       Contacto
     </div>
+    <% end %>
   </div>
 
 </div>
