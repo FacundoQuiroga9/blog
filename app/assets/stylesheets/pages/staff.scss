@@ -1,0 +1,34 @@
+.container{
+  min-height: 100vh;
+}
+.card-member{
+  display: flex;
+  padding: .5rem;
+  flex-direction: column;
+  justify-content: end;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  background-color: #E72326;
+  text-shadow: 1px 1px 3px rgb(0, 0, 0);
+  border-radius: 5px;
+}
+.facundo{
+  background-image: url(asset_path('facundo.png'));
+}
+.ariel{
+  background-image: url(asset_path('ariel.png'));
+}
+.gabriel{
+  background-image: url(asset_path('random.png'));
+}
+.santiago{
+  background-image: url(asset_path('random.png'));
+}
+.kyran{
+  background-image: url(asset_path('random.png'));
+}
+.card-member h4, .card-member h6{
+  color: white;
+  user-select: none;
+}
