@@ -2,7 +2,7 @@
   <h1 class="my-5">El equipo</h1>
   <div class="row">
     <div class="col-7">
-      <h4>Jugadores</h4>
+      <h2>Jugadores</h2>
       <table>
     <thead>
       <tr>
@@ -33,13 +33,41 @@
       <% end %>
     </tbody>
   </table>
+    <%= link_to 'Nuevo jugador', new_player_path %>
     </div>
     <div class="col-5">
-      <h4>Ultimos partidos</h4>
+      <h2>Ultimos partidos</h2>
+      <% @matches.each do |match| %>
+        <div class="card">
+          <div class="row">
+            <div class="col-6">
+              <p><%=match.rival%></p>
+            </div>
+            <div class="col-6">
+              <p><%=match.result%></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <h4>Convocados</h4>
+              <% match.players.each do |player| %>
+              <p> <%= player.name%></p>
+              <% end %>
+            </div>
+
+            </div>
+            <div class="col-6">
+              <h4>Goleadores</h4>
+              <% match.scorers.each do |scorer| %>
+              <p> <%= scorer.name%></p>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
     </div>
+    <%= link_to 'Nuevo partido', new_match_path %>
   </div>
   <br>
 
-  <%= link_to 'Nuevo jugador', new_player_path %>
 
 </div>

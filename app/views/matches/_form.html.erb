@@ -27,12 +27,12 @@
 
   <div class="field">
     <%= form.label :players %>
-    <%= form.collection_select :player_ids, Player.all, :id, :name, {}, multiple: true %>
+    <%= form.collection_select(:player_ids, Player.all, :id, :name, {}, { multiple: true }) %>
   </div>
 
   <div class="field">
     <%= form.label :scorers %>
-    <%= form.collection_select :scorer_ids, Player.all, :id, :name, {}, multiple: true %>
+    <%= form.collection_select(:scorer_ids, Player.all, :id, :name, {}, { multiple: true }) %>
   </div>
 
   <div class="actions">
