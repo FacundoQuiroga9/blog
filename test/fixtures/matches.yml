@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  rival: MyString
+  result: MyString
+  date: 2024-04-10
+
+two:
+  rival: MyString
+  result: MyString
+  date: 2024-04-10

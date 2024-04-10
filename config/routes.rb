@@ -10,11 +10,14 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "pages#home"
   resources :posts
+  resources :players
+  resources :matches
+
   get 'staff', to: 'pages#staff'
-  get 'team', to: 'pages#team'
   get 'contact', to: 'pages#contact'
 
   resources :users do
     get 'user_posts', to: 'posts#user_posts', on: :member
   end
+
 end

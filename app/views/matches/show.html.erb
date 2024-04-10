@@ -1,0 +1,20 @@
+<h1>Detalles del Partido</h1>
+
+<p><strong>Rival:</strong> <%= @match.rival %></p>
+<p><strong>Resultado:</strong> <%= @match.result %></p>
+<p><strong>Jugadores:</strong></p>
+<ul>
+  <% @match.players.each do |player| %>
+    <li><%= player.name %></li>
+  <% end %>
+</ul>
+<p><strong>Goleadores:</strong></p>
+<ul>
+  <% @match.scorers.each do |scorer| %>
+    <li><%= scorer.name %></li>
+  <% end %>
+</ul>
+<p><strong>Fecha:</strong> <%= @match.date %></p>
+
+<%= link_to 'Editar', edit_match_path(@match) %> |
+<%= link_to 'Volver', matches_path %>

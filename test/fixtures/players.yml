@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  birthday: 2024-04-10
+  games: 1
+  goals: 1
+  debut: 2024-04-10
+
+two:
+  name: MyString
+  birthday: 2024-04-10
+  games: 1
+  goals: 1
+  debut: 2024-04-10

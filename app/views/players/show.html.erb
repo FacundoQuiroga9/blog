@@ -1,0 +1,35 @@
+<div class="container">
+  <%= @player.photo.attached? ? image_tag(@player.photo) : image_tag('random.png') %>
+  <p>
+    <strong>Name:</strong>
+    <%= @player.name %>
+  </p>
+
+  <p>
+    <strong>Birthday:</strong>
+    <%= @player.birthday %>
+  </p>
+
+  <p>
+    <strong>Descripción:</strong>
+    <%= @player.description %>
+  </p>
+
+  <p>
+    <strong>Games:</strong>
+    <%= @player.games %>
+  </p>
+
+  <p>
+    <strong>Goals:</strong>
+    <%= @player.goals %>
+  </p>
+
+  <p>
+    <strong>Debut:</strong>
+    <%= @player.debut %>
+  </p>
+
+  <%= link_to 'Edit', edit_player_path(@player) %> |
+  <%= link_to 'Back', players_path %>
+</div>
