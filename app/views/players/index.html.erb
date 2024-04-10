@@ -23,9 +23,12 @@
           <td><%= player.games %></td>
           <td><%= player.goals %></td>
           <td><%= player.debut %></td>
-          <td><%= link_to 'Show', player %></td>
-          <td><%= link_to 'Edit', edit_player_path(player) %></td>
-          <td><%= link_to 'Destroy', player, method: :delete, data: { confirm: 'Estas seguro?' } %></td>
+          <td><%= link_to 'Detalles', player %></td>
+          <td><%= link_to 'Editar', edit_player_path(player) %></td>
+          <td><%= link_to "Eliminar",
+                player_path(player),
+                data: { turbo_method: :delete, turbo_confirm: "Estás seguro?" }%>
+          </td>
         </tr>
       <% end %>
     </tbody>
