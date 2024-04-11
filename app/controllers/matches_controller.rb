@@ -1,15 +1,13 @@
 # app/controllers/matches_controller.rb
 class MatchesController < ApplicationController
-  before_action :set_match, only: %i[show edit update destroy]
+  before_action :set_match, only: %i[show destroy]
 
   def show
+
   end
 
   def new
     @match = Match.new
-  end
-
-  def edit
   end
 
   def create
@@ -23,13 +21,6 @@ class MatchesController < ApplicationController
     end
   end
 
-  def update
-    if @match.update(match_params)
-      redirect_to @match, notice: 'Partido actualizado exitosamente.'
-    else
-      render :edit
-    end
-  end
 
 
 
@@ -66,25 +57,13 @@ class MatchesController < ApplicationController
 
     players = match.players
 
-    puts "Match: #{match.id}, Players: #{players.map(&:id)}"
-
-    # Eliminar el partido de cada jugador y recalcular las estadísticas
     players.each do |player|
-      # Eliminar el partido del jugador
       player.matches.delete(match)
 
-      puts "Player: #{player.id}, Matches: #{player.matches.map(&:id)}"
-
-      # Calcular el número total de partidos y goles del jugador
       total_matches = player.matches.count
       total_goals = player.matches.sum { |m| m.scorers.include?(player) ? 1 : 0 }
 
-      puts "Player: #{player.id}, Total Matches: #{total_matches}, Total Goals: #{total_goals}"
-
-      # Actualizar las estadísticas del jugador en la base de datos
       player.update_columns(games: total_matches, goals: total_goals)
-
-      puts "Player: #{player.id}, Updated Matches: #{player.matches.count}, Updated Goals: #{player.goals}"
     end
   end
 

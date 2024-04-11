@@ -62,7 +62,6 @@
               <p> <%= scorer.name%></p>
               <% end %>
               <td><%= link_to 'Detalles', match %></td>
-              <td><%= link_to 'Editar', edit_match_path(match) %></td>
               <td><%= link_to "Eliminar",
                 match_path(match),
                 data: { turbo_method: :delete, turbo_confirm: "Estás seguro?" }%>
