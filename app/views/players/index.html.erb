@@ -8,11 +8,11 @@
           <table class="table">
             <thead>
               <tr>
-                <th>Nombre</th>
-                <th>Edad</th>
-                <th>Partidos</th>
-                <th>Goles</th>
-                <th>Año de debut</th>
+                <th><%= sort_link("name", "Nombre") %></th>
+                <th><%= sort_link("birthday", "Edad") %></th>
+                <th><%= sort_link("games", "Partidos") %></th>
+                <th><%= sort_link("goals", "Goles") %></th>
+                <th><%= sort_link("debut", "Debut") %></th>
                 <th colspan="3"></th>
               </tr>
             </thead>
@@ -60,61 +60,55 @@
       </div>
 
       <% @matches.each do |match| %>
-        <%= link_to match_path(match), class: 'card-link' do %>
-          <div class="card mb-4 text-center p-0">
-            <div class="card-body">
-                <div class="row">
-                  <div class="col-5">
-                    <%= image_tag "logo-vertical.png", class:"team-crest", alt: "Escudo del equipo" %>
-                  </div>
-                  <div class="col-2">
-                     <h4><%= match.date > Date.today ? 'VS' : match.result %></h4>
-                  </div>
-                  <div class="col-5">
-                    <div class="row">
-                      <%= image_tag "generic.png", class:"opponent-crest", alt: "Escudo del equipo" %>
-                    </div>
-                    <div class="row">
-                      <h5>
-                        <%= match.rival %>
-                      </h5>
-                    </div>
-                  </div>
-                </div>
+  <%= link_to match_path(match), class: 'card-link' do %>
+    <div class="card mb-4">
+      <div class="card-body">
+        <div class="d-flex justify-content-center align-items-center">
+          <%= image_tag "logo-vertical.png", class: "team-crest", alt: "Escudo del equipo local" %>
+          <div class="mx-3">
+            <h5 class="text-center result_vs"><%= match.date > Date.today ? 'VS' : match.result %></h5>
+          </div>
+          <div class="text-center">
+            <%= image_tag "generic.png", class: "opponent-crest", alt: "Escudo del equipo rival" %>
+            <h5><%= match.rival %></h5>
+          </div>
+        </div>
 
 
 
 
-              <div class="row">
-                <div class="col-12">
-                  <% if match.date > Date.today %>
-                    <h5><%= l(match.date, format: :long) %></h5> 
-                  <% else %>
-                  <h5>Convocados</h5>
-                  <% match.players.each do |player| %>
-                    <p class="player">
-                      <%= player.name %>
-                      <% scorer_record = match.match_scorers.find_by(player: player) %>
-                      <% if scorer_record&.goals_count.to_i > 0 %>
-                        <% scorer_record.goals_count.times do %>
-                          <i class="fa-solid fa-futbol"></i>
-                        <% end %>
-                      <% end %>
-                    </p>
+              <!-- Contenedor de la lista de convocados o fecha del partido -->
+        <div class="flex-grow-1 d-flex align-items-center justify-content-center">
+          <% if match.date > Date.today %>
+            <h5 class="text-center"><%= l(match.date, format: :long) %></h5>
+          <% else %>
+            <div>
+              <h5 class="text-center">Convocados</h5>
+              <% match.players.each do |player| %>
+                <p class="player text-center">
+                  <%= player.name %>
+                  <% scorer_record = match.match_scorers.find_by(player: player) %>
+                  <% if scorer_record&.goals_count.to_i > 0 %>
+                    <% scorer_record.goals_count.times do %>
+                      <i class="fa-solid fa-futbol"></i>
+                    <% end %>
                   <% end %>
-                  <% end %>
-                </div>
-              </div>
-              <%= link_to "Eliminar",
-                match_path(match),
-                data: { turbo_method: :delete, turbo_confirm: "¿Estás seguro?" },
-                class: "btn btn-danger btn-block mt-2" %>
+                </p>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+
+        <!-- Botón Eliminar, alineado a la derecha -->
+         <div class="mt-2 d-flex justify-content-end"> <!-- Justify content end para alinear a la derecha -->
+          <%= link_to "Eliminar", match_path(match),
+            data: { turbo_method: :delete, turbo_confirm: "¿Estás seguro?" },
+            class: "btn btn-danger" %>
+        </div>
       </div>
     </div>
-    <% end %>
+  <% end %>
 <% end %>
-
-
     </div>
   </div>
 </div>

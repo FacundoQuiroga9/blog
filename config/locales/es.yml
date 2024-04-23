@@ -19,3 +19,17 @@ es:
       default: "%A, %d de %B de %Y %H:%M"
       short: "%d de %b a las %H:%M"
       long: "%A, %d de %B de %Y %H:%M"
+
+  helpers:
+    page_entries_info:
+      one_page:
+        display_entries: "%{count} partidos mostrados"
+      more_pages:
+        display_entries: "Mostrando %{entry_name} %{first} - %{last} de %{total} en total"
+  views:
+    pagination:
+      first: "Inicio"
+      last: "Final"
+      previous: "Siguiente partido"
+      next: "Anterior partido"
+      truncate: "…"
