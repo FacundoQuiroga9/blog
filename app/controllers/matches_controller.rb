@@ -27,7 +27,7 @@ class MatchesController < ApplicationController
   def destroy
     update_players_statistics_on_destroy(@match)
     @match.destroy
-    redirect_to matches_url, notice: 'Partido eliminado exitosamente.'
+    redirect_to players_url, notice: 'Partido eliminado exitosamente.'
   end
 
   private
@@ -37,17 +37,21 @@ class MatchesController < ApplicationController
   end
 
   def match_params
-    params.require(:match).permit(:rival, :result, :date, player_ids: [], scorer_ids: [])
+    params.require(:match).permit(
+      :rival, :result, :date, player_ids: [],
+      match_scorers_attributes: [:id, :player_id, :goals_count, :_destroy]
+    )
   end
+
 
   def update_players_statistics_on_create(match)
     return unless match
 
     players = match.players
-
     players.each do |player|
       player.increment!(:games) # Incrementar partidos jugados para todos los jugadores
-      player.increment!(:goals) if match.scorers.include?(player) # Incrementar goles para los goleadores del partido
+      goals_count = match.match_scorers.where(player: player).sum(:goals_count)
+      player.increment!(:goals, goals_count) if goals_count > 0 # Sumar la cantidad de goles específicos
     end
   end
 
@@ -58,13 +62,12 @@ class MatchesController < ApplicationController
     players = match.players
 
     players.each do |player|
-      player.matches.delete(match)
-
-      total_matches = player.matches.count
-      total_goals = player.matches.sum { |m| m.scorers.include?(player) ? 1 : 0 }
-
-      player.update_columns(games: total_matches, goals: total_goals)
+      player.decrement!(:games) # Decrementar partidos jugados
+      goals_count = match.match_scorers.where(player: player).sum(:goals_count)
+      player.decrement!(:goals, goals_count) if goals_count > 0 # Restar la cantidad de goles específicos
     end
+
+    match.destroy # Asegúrate de eliminar el partido después de actualizar las estadísticas
   end
 
 

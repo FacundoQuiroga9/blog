@@ -4,7 +4,7 @@ class PlayersController < ApplicationController
 
   def index
     @players = Player.all
-    @matches = Match.last(5)
+    @matches = Match.order(date: :desc).page(params[:page]).per(1)
   end
 
   def show

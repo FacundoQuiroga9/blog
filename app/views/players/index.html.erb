@@ -1,78 +1,116 @@
 <div class="container">
-  <h1 class="my-5">El equipo</h1>
   <div class="row">
-    <div class="col-7">
-      <h2>Jugadores</h2>
-      <table>
-    <thead>
-      <tr>
-        <th>Nombre</th>
-        <th>Edad</th>
-        <th>Partidos</th>
-        <th>Goles</th>
-        <th>Año de debut</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @players.each do |player| %>
-        <tr>
-          <td><%= player.name %></td>
-          <td><%= player.birthday %></td>
-          <td><%= player.games %></td>
-          <td><%= player.goals %></td>
-          <td><%= player.debut %></td>
-          <td><%= link_to 'Detalles', player %></td>
-          <td><%= link_to 'Editar', edit_player_path(player) %></td>
-          <td><%= link_to "Eliminar",
-                player_path(player),
-                data: { turbo_method: :delete, turbo_confirm: "Estás seguro?" }%>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-    <%= link_to 'Nuevo jugador', new_player_path %>
+    <div class="col-md-8">
+      <h1 class="my-5">El equipo</h1>
+      <div class="row">
+        <div class="col-12">
+          <h2>Jugadores</h2>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Edad</th>
+                <th>Partidos</th>
+                <th>Goles</th>
+                <th>Año de debut</th>
+                <th colspan="3"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @players.each do |player| %>
+              <tr>
+                <td>
+                  <% if player.photo.attached? %>
+                    <%= image_tag player.photo.variant(resize_to_fill: [50, 50]).processed, class: "avatar", alt: "Avatar" %>
+                  <% else %>
+                    <%= image_tag "random.png", class: "avatar", alt: "Avatar por defecto" %>
+                  <% end %>
+                  <%= player.name %>
+                </td>
+                <td>
+                  <% age = Time.zone.now.year - player.birthday.year %>
+                  <%= "#{age} años" %>
+                </td>
+                <td ><%= player.games %></td>
+                <td><%= player.goals %></td>
+                <td><%= player.debut.strftime("%d/%m/%y") %></td>
+                <td><%= link_to 'Detalles', player %></td>
+                <td><%= link_to 'Editar', edit_player_path(player) %></td>
+                <td><%= link_to "Eliminar",
+                  player_path(player),
+                  data: { turbo_method: :delete, turbo_confirm: "¿Estás seguro?" }%>
+                </td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+          <%= link_to 'Nuevo jugador', new_player_path, class: 'btn btn-primary' %>
+        </div>
+      </div>
     </div>
-    <div class="col-5">
-      <h2>Ultimos partidos</h2>
+    <div class="col-md-4">
+      <h1 class="my-5">Últimos partidos</h1>
+      <div class="row mb-4">
+        <div class="col-8">
+          <%= paginate @matches %>
+        </div>
+        <div class="col-4">
+          <%= link_to 'Nuevo partido', new_match_path, class: 'btn btn-primary' %>
+        </div>
+      </div>
+
       <% @matches.each do |match| %>
-        <div class="card">
-          <div class="row">
-            <div class="col-6">
-              <p><%=match.rival%></p>
-            </div>
-            <div class="col-6">
-              <p><%=match.result%></p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-6">
-              <h4>Convocados</h4>
-              <% match.players.each do |player| %>
-              <p> <%= player.name%></p>
-              <% end %>
-            </div>
+        <%= link_to match_path(match), class: 'card-link' do %>
+          <div class="card mb-4 text-center p-0">
+            <div class="card-body">
+                <div class="row">
+                  <div class="col-5">
+                    <%= image_tag "logo-vertical.png", class:"team-crest", alt: "Escudo del equipo" %>
+                  </div>
+                  <div class="col-2">
+                    <h4><%= match.result %></h4>
+                  </div>
+                  <div class="col-5">
+                    <div class="row">
+                      <%= image_tag "generic.png", class:"opponent-crest", alt: "Escudo del equipo" %>
+                    </div>
+                    <div class="row">
+                      <h5>
+                        <%= match.rival %>
+                      </h5>
+                    </div>
+                  </div>
+                </div>
 
-            </div>
-            <div class="col-6">
-              <h4>Goleadores</h4>
-              <% match.scorers.each do |scorer| %>
-              <p> <%= scorer.name%></p>
-              <% end %>
-              <td><%= link_to 'Detalles', match %></td>
-              <td><%= link_to "Eliminar",
+
+
+
+              <div class="row">
+                <div class="col-12">
+                  <h5>Convocados</h5>
+                  <% match.players.each do |player| %>
+                    <p class="player">
+                      <%= player.name %>
+                      <% scorer_record = match.match_scorers.find_by(player: player) %>
+                      <% if scorer_record&.goals_count.to_i > 0 %>
+                        <% scorer_record.goals_count.times do %>
+                          <i class="fa-solid fa-futbol"></i>
+                        <% end %>
+                      <% end %>
+                    </p>
+                  <% end %>
+                </div>
+              </div>
+              <%= link_to "Eliminar",
                 match_path(match),
-                data: { turbo_method: :delete, turbo_confirm: "Estás seguro?" }%>
-              </td>
-            </div>
-          </div>
-        <% end %>
+                data: { turbo_method: :delete, turbo_confirm: "¿Estás seguro?" },
+                class: "btn btn-danger btn-block mt-2" %>
+      </div>
     </div>
-    <%= link_to 'Nuevo partido', new_match_path %>
+    <% end %>
+<% end %>
+
+
+    </div>
   </div>
-  <br>
-
-
 </div>

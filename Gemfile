@@ -72,3 +72,4 @@ gem "bootstrap", "~> 5.2"
 gem 'simple_form'
 gem 'faker'
 gem "devise", "~> 4.9"
+gem 'kaminari'

@@ -8,8 +8,9 @@ class Player < ApplicationRecord
 
   def update_statistics(matches)
     self.games = matches.count
-    self.goals = matches.sum { |match| match.scorers.include?(self) ? 1 : 0 }
+    self.goals = matches.sum { |match| match.match_scorers.where(player: self).sum(:goals_count) }
     save
   end
+
 
 end

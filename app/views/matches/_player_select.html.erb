@@ -1,0 +1,18 @@
+<%# app/views/matches/_player_select.html.erb %>
+<div class="nested-fields">
+  <div class="row">
+    <div class="col-5">
+      <%= f.label :name, "Jugador" %>
+      <%= f.collection_select(:player_id, Player.all, :id, :name, { include_blank: true }, { class: 'form-control' }) %>
+    </div>
+    <div class="col-5">
+        <%= f.label :scorers, "Goles" %>
+        <%= f.number_field :goals_count, min: 1, value: f.object.goals_count || 1, class: "form-control" %>
+    </div>
+    <div class="col-2">
+       <%= link_to "Remover", '#',
+       class: "remove_fields",
+       data: { action: "click->matches#removeScorer" } %>
+    </div>
+  </div>
+</div>
