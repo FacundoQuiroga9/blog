@@ -2,23 +2,30 @@
   <div class="row">
     <div class="col-md-8">
       <h1 class="my-5">El equipo</h1>
+      <div class="row mb-3 align-items-center"> <!-- Añade una clase para margen inferior y alineación -->
+        <div class="col-10">
+          <h2>Jugadores</h2>
+        </div>
+        <div class="col-2 text-right"> <!-- Alinea el contenido de la columna a la derecha -->
+          <%= link_to 'Nuevo jugador', new_player_path, class: 'btn btn-primary float-right' %> <!-- Botón flotante a la derecha -->
+        </div>
+      </div>
       <div class="row">
         <div class="col-12">
-          <h2>Jugadores</h2>
           <table class="table">
             <thead>
               <tr>
-                <th><%= sort_link("name", "Nombre") %></th>
-                <th><%= sort_link("birthday", "Edad") %></th>
-                <th><%= sort_link("games", "Partidos") %></th>
-                <th><%= sort_link("goals", "Goles") %></th>
-                <th><%= sort_link("debut", "Debut") %></th>
-                <th colspan="3"></th>
+                <th class="table-title"><%= sort_link("name", "Nombre") %></th>
+                <th class="table-title"><%= sort_link("birthday", "Edad") %></th>
+                <th class="table-title"><%= sort_link("games", "Partidos") %></th>
+                <th class="table-title"><%= sort_link("goals", "Goles") %></th>
+                <th class="table-title"><%= sort_link("debut", "Debut") %></th>
+                <th colspan="2"></th>
               </tr>
             </thead>
             <tbody>
               <% @players.each do |player| %>
-              <tr>
+              <tr class="row-player" data-controller="clickable-row" data-clickable-row-url-value="<%= player_path(player) %>" data-action="click->clickable-row#navigateTo">
                 <td>
                   <% if player.photo.attached? %>
                     <%= image_tag player.photo.variant(resize_to_fill: [50, 50]).processed, class: "avatar", alt: "Avatar" %>
@@ -34,17 +41,19 @@
                 <td ><%= player.games %></td>
                 <td><%= player.goals %></td>
                 <td><%= player.debut.strftime("%d/%m/%y") %></td>
-                <td><%= link_to 'Detalles', player %></td>
-                <td><%= link_to 'Editar', edit_player_path(player) %></td>
-                <td><%= link_to "Eliminar",
-                  player_path(player),
-                  data: { turbo_method: :delete, turbo_confirm: "¿Estás seguro?" }%>
+                <td><%= link_to edit_player_path(player) do %>
+                      <i class="fas fa-edit"></i>
+                    <% end %>
+                </td>
+                <td><%= link_to player_path(player),
+                          data: { turbo_method: :delete, turbo_confirm: "¿Estás seguro?" } do %>
+                      <i class="fas fa-trash-alt"></i>
+                    <% end %>
                 </td>
               </tr>
               <% end %>
             </tbody>
           </table>
-          <%= link_to 'Nuevo jugador', new_player_path, class: 'btn btn-primary' %>
         </div>
       </div>
     </div>
@@ -61,7 +70,7 @@
 
       <% @matches.each do |match| %>
   <%= link_to match_path(match), class: 'card-link' do %>
-    <div class="card mb-4">
+    <div class="card mb-4 match-card">
       <div class="card-body">
         <div class="d-flex justify-content-center align-items-center">
           <%= image_tag "logo-vertical.png", class: "team-crest", alt: "Escudo del equipo local" %>

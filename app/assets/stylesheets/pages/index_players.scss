@@ -1,3 +1,7 @@
+.match-card:hover{
+  box-shadow: 0 0 15px rgb(255, 4, 4);
+}
+
 .team-crest{
   height: 200px;
 }
@@ -10,10 +14,45 @@
   margin: 0;
 }
 
-td{
-  vertical-align: center;
+.table .row-player td {
+  vertical-align: middle;
+  font-size: 1.2rem;
 }
+
 
 .result_vs{
   font-size: 50px;
+}
+
+th.table-title{
+  font-size: 1.5rem;
+}
+
+th.table-title a{
+  color: #E72326 !important;
+  text-decoration: none;
+}
+
+tr.row-player:hover{
+  cursor: pointer;
+  background: linear-gradient(to top, #9c3233 , #df474a 30%);
+  color: white  !important;
+}
+
+tr.row-player:hover td {
+  background: transparent;
+  color: white;
+}
+
+.fa-edit{
+  color: rgb(2, 127, 93);
+}
+
+.fa-trash-alt{
+  color: #ba2022;
+}
+
+
+tr.row-player:hover i {
+  color: white;
 }
