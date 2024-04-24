@@ -1,0 +1,36 @@
+
+
+.players-container {
+  font-size: 1.7rem;
+  height: 300px; /* Establece el alto fijo */
+  overflow: auto; /* Permite desplazamiento si el contenido excede el alto fijo */
+  display: flex; /* Permite que los elementos hijo se acomoden en fila y luego en columnas */
+  flex-wrap: wrap; /* Envuelve los elementos en la siguiente columna */
+  align-content: center; /* Alinea el contenido al inicio de la caja flex */
+  flex-direction: column;
+  gap: 1rem 4rem; /* Espacio entre las columnas de jugadores */
+  background-image: url(asset_path('soccerfield.jpg'));
+  object-fit: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: .5rem 1rem;
+}
+.player-name {
+  white-space: nowrap; /* Evita que los nombres de jugadores se partan en varias líneas */
+  color: white;
+  text-shadow: 1px 1px 3px rgb(0, 0, 0);
+}
+
+.player-name > a{
+  color: white;
+  text-decoration: none;
+  text-shadow: 1px 1px 3px rgb(0, 0, 0);
+}
+
+.player-name > a:hover{
+  color: #E72326;
+}
+
+.player-name > .fa-futbol{
+  color: white;
+}

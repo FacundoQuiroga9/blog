@@ -1,19 +1,50 @@
-<h1>Detalles del Partido</h1>
+<div class="container mt-4">
+  <!-- Encabezado con la fecha del partido sobre los escudos y el resultado -->
+  <div class="text-center mb-3">
+    <h1>Detalles del Partido</h1>
+    <p class="lead"><%= @match.date.strftime("%d/%m/%Y") %></p> <!-- Formato de fecha -->
+  </div>
 
-<p><strong>Rival:</strong> <%= @match.rival %></p>
-<p><strong>Resultado:</strong> <%= @match.result %></p>
-<p><strong>Jugadores:</strong></p>
-<ul>
-  <% @match.players.each do |player| %>
-    <li><%= player.name %></li>
-  <% end %>
-</ul>
-<p><strong>Goleadores:</strong></p>
-<ul>
-  <% @match.scorers.each do |scorer| %>
-    <li><%= scorer.name %></li>
-  <% end %>
-</ul>
-<p><strong>Fecha:</strong> <%= @match.date %></p>
+  <!-- Contenedor de escudos y resultado -->
+  <div class="d-flex justify-content-center align-items-center mb-3">
+    <!-- Escudo equipo local -->
+    <%= image_tag "logo-vertical.png", class: "team-crest", alt: "Escudo del equipo local" %>
+    <!-- Resultado -->
+    <div class="mx-3">
+      <h2 class="result_vs"><%= @match.result %></h2>
+    </div>
+    <!-- Escudo equipo rival -->
+    <div class="text-center">
+      <%= image_tag "generic.png", class: "opponent-crest", alt: "Escudo del equipo rival" %>
+      <h5><%= @match.rival %></h5>
+    </div>
+  </div>
 
-<%= link_to 'Volver', matches_path %>
+  <!-- Jugadores convocados -->
+  <div class="mb-3">
+    <h3>Jugadores:</h3>
+    <div class="players-container">
+    <% @match.players.each do |player| %>
+      <div class="player-name">
+        <%= link_to player.name, player_path(player) %>
+        <!-- Iconos de goles, si es que anotó -->
+        <% scorer_record = @match.match_scorers.find_by(player: player) %>
+        <% if scorer_record&.goals_count.to_i > 1 %>
+          <i class="fa-solid fa-futbol"></i> x<%= scorer_record.goals_count %>
+        <% elsif scorer_record&.goals_count.to_i == 1 %>
+          <i class="fa-solid fa-futbol"></i>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  </div>
+
+
+  <!-- Botones de acción -->
+  <div class="d-flex justify-content-between">
+    <%= link_to 'Equipo', players_path, class: 'btn btn-secondary' %>
+    <%= link_to "Eliminar", match_path(@match),
+            data: { turbo_method: :delete, turbo_confirm: "¿Estás seguro?" },
+            class: "btn btn-danger" %>
+  </div>
+</div>
