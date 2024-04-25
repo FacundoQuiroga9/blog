@@ -1,0 +1,63 @@
+.simple-calendar {
+  margin: auto;
+  border-collapse: collapse;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.calendar-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #f8f8f8;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.calendar-title {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+nav a {
+  padding: 0 .5rem;
+  text-decoration: none;
+  color: #E72326;
+  font-weight: bold;
+  font-size: 1.8rem;
+}
+
+.btn-prev, .btn-next {
+  font-size: 1.5rem;
+  font-weight: bold;
+  background-color: #E72326;
+  color: white;
+  border-radius: 50%;
+}
+.btn-prev:hover, .btn-next:hover {
+  background-color: transparent;
+  color: #E72326;
+}
+
+.table_calendar {
+  width: 100%;
+  border-spacing: 0;
+}
+
+.table_calendar thead th {
+  background-color: #E72326;
+  color: white;
+  padding: .5rem;
+  text-align: center;
+}
+
+.table_calendar tbody tr {
+  height: 120px;
+  text-align: center;
+  border-bottom: 1px solid #eaeaea;
+}
+
+/* Resaltar el día actual */
+.simple-calendar .today {
+  background-color: #d76162 !important;
+  color: white;
+}

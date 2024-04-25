@@ -1,5 +1,5 @@
 .match-card:hover{
-  box-shadow: 0 0 15px rgb(255, 4, 4);
+  box-shadow: 0 0 10px rgb(116, 116, 116);
 }
 
 .team-crest{
@@ -24,6 +24,10 @@
   font-size: 50px;
 }
 
+.table{
+  box-shadow: 0 0 10px rgb(116, 116, 116);
+}
+
 th.table-title{
   font-size: 1.5rem;
 }
@@ -44,8 +48,16 @@ tr.row-player:hover td {
   color: white;
 }
 
+td>a{
+  display: flex;
+  width: 40px !important;
+  height: 40px !important;
+  justify-content: center;
+  align-items: center;
+}
+
 .fa-edit{
-  color: rgb(2, 127, 93);
+  color: rgb(2, 127, 93)
 }
 
 .fa-trash-alt{

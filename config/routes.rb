@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   root "pages#home"
   resources :posts
   resources :players
-  resources :matches, except: [:edit]
+  resources :matches, except: [:edit] 
 
   get 'staff', to: 'pages#staff'
   get 'contact', to: 'pages#contact'

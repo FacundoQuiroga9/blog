@@ -6,4 +6,9 @@ class Match < ApplicationRecord
   has_many :scorers, through: :match_scorers, source: :player
 
   accepts_nested_attributes_for :match_scorers, allow_destroy: true, reject_if: proc { |attributes| attributes['player_id'].blank? }
+
+  def start_time
+    self.date ## Asegúrate de que date es la columna correcta con la fecha del partido.
+  end
+
 end

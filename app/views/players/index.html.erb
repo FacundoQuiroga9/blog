@@ -7,12 +7,12 @@
           <h2>Jugadores</h2>
         </div>
         <div class="col-2 text-right"> <!-- Alinea el contenido de la columna a la derecha -->
-          <%= link_to 'Nuevo jugador', new_player_path, class: 'btn btn-primary float-right' %> <!-- Botón flotante a la derecha -->
+          <%= link_to 'Nuevo jugador', new_player_path, class: 'btn btn-olsc float-right' %> <!-- Botón flotante a la derecha -->
         </div>
       </div>
       <div class="row">
         <div class="col-12">
-          <table class="table">
+          <table class="table players-table">
             <thead>
               <tr>
                 <th class="table-title"><%= sort_link("name", "Nombre") %></th>
@@ -41,11 +41,13 @@
                 <td ><%= player.games %></td>
                 <td><%= player.goals %></td>
                 <td><%= player.debut.strftime("%d/%m/%y") %></td>
-                <td><%= link_to edit_player_path(player) do %>
+                <td >
+                <%= link_to edit_player_path(player) do %>
                       <i class="fas fa-edit"></i>
                     <% end %>
                 </td>
-                <td><%= link_to player_path(player),
+                <td >
+                  <%= link_to player_path(player),
                           data: { turbo_method: :delete, turbo_confirm: "¿Estás seguro?" } do %>
                       <i class="fas fa-trash-alt"></i>
                     <% end %>
@@ -64,7 +66,7 @@
           <%= paginate @matches %>
         </div>
         <div class="col-4">
-          <%= link_to 'Nuevo partido', new_match_path, class: 'btn btn-primary' %>
+          <%= link_to 'Nuevo partido', new_match_path, class: 'btn btn-olsc' %>
         </div>
       </div>
 
@@ -90,34 +92,13 @@
         <div class="flex-grow-1 d-flex align-items-center justify-content-center">
           <% if match.date > Date.today %>
             <h5 class="text-center"><%= l(match.date, format: :long) %></h5>
-          <% else %>
-            <div>
-              <h5 class="text-center">Convocados</h5>
-              <% match.players.each do |player| %>
-                <p class="player text-center">
-                  <%= player.name %>
-                  <% scorer_record = match.match_scorers.find_by(player: player) %>
-                  <% if scorer_record&.goals_count.to_i > 0 %>
-                    <% scorer_record.goals_count.times do %>
-                      <i class="fa-solid fa-futbol"></i>
-                    <% end %>
-                  <% end %>
-                </p>
-              <% end %>
-            </div>
           <% end %>
-        </div>
-
-        <!-- Botón Eliminar, alineado a la derecha -->
-         <div class="mt-2 d-flex justify-content-end"> <!-- Justify content end para alinear a la derecha -->
-          <%= link_to "Eliminar", match_path(match),
-            data: { turbo_method: :delete, turbo_confirm: "¿Estás seguro?" },
-            class: "btn btn-danger" %>
         </div>
       </div>
     </div>
   <% end %>
 <% end %>
+      <%= link_to 'Calendario', matches_path, class: 'btn btn-olsc' %>
     </div>
   </div>
 </div>

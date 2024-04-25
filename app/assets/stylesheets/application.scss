@@ -1,6 +1,6 @@
 // External libraries
 @import "bootstrap";
-
+@import "simple_calendar";
 
 // Your CSS partials
 @import "components/index";
@@ -15,6 +15,7 @@
 @import "pages/index_players";
 @import "pages/show_players";
 @import "pages/show_matches";
+@import "pages/index_matches";
 
 //Fonts
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bebas+Neue&display=swap')

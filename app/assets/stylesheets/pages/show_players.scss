@@ -12,3 +12,18 @@
   height: 100%;
   object-fit: cover; /* Esto asegura que la imagen cubra el área sin deformarse */
 }
+
+.pagination a{
+  border-color: rgb(2, 127, 93);
+  color: rgb(2, 127, 93);
+  padding: 0.375rem 0.75rem;
+  line-height: 1.5rem;
+  font-weight: 400;
+  font-size: 1rem;
+  vertical-align: middle;
+}
+
+.pagination a:hover{
+  background-color: rgb(2, 127, 93);
+  color: white;
+}

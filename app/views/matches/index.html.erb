@@ -1,0 +1,32 @@
+<div class="container mt-5">
+  <%= month_calendar(events: @matches, start_time: :date) do |date, matches| %>
+      <%= date.day %>
+    <% matches.each do |match| %>
+      <div class="mini-card">
+        <% if match.date.past? %>
+          <div class="team-logo">
+            <%= image_tag "logo-vertical.png", alt: "Liverpool logo" %> <!-- Reemplaza con la imagen correcta -->
+          </div>
+          <div class="match-result">
+            <%= match.result %>
+          </div>
+          <div class="team-logo">
+           <%= image_tag "generic.png", alt: "Opponent logo" %> <!-- Reemplaza con la imagen correcta -->
+            <span class="team-name"><%= match.rival %></span>
+          </div>
+        <% else %>
+          <div class="team-logo">
+            <%= image_tag "logo-vertical.png", alt: "Liverpool logo" %> <!-- Reemplaza con la imagen correcta -->
+          </div>
+          <div class="match-vs">
+            VS
+          </div>
+          <div class="team-logo">
+            <%= image_tag "generic.png", alt: "Opponent logo" %>
+            <span class="team-name"><%= match.rival %></span> <!-- Reemplaza con la imagen correcta -->
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

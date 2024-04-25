@@ -73,3 +73,4 @@ gem 'simple_form'
 gem 'faker'
 gem "devise", "~> 4.9"
 gem 'kaminari'
+gem "simple_calendar"
