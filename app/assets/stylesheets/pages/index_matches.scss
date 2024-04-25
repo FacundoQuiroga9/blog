@@ -1,37 +1,13 @@
-.mini-card {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.mini-card-link {
+  height: calc(100% - 19px) ;
+  text-decoration: none;
+  color: black;
 }
 
-.team-logo {
-  width: 40px; /* Tamaño reducido para los logos */
-  height: 40px;
-  margin-right: 5px;
-  display: flex;
-  flex-direction: column; /* Alinea verticalmente el logo y el texto */
-  align-items: center; /* Centra el contenido */
-  /* Resto de tu CSS para .team-logo */
+.mini-card-link:hover {
+  background-color: #ffb7b8;
 }
 
-.team-logo img {
-  max-width: 100%;
-  height: auto;
-  margin-bottom: 4px;
-}
-
-.match-result,
-.match-vs {
-  font-size: 1.5rem; /* Tamaño de fuente reducido */
-  margin: 0 5px;
-}
-
-.mini-card .match-result {
-  min-width: 20px; /* Espacio mínimo para el resultado */
-}
-
-.mini-card p {
-  font-size: 0.75rem; /* Tamaño de fuente para el nombre del rival */
-  margin: 0; /* Elimina los márgenes por defecto */
-  text-align: center;
+.match-result{
+  font-size: 1.5rem;
 }

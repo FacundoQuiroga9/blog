@@ -1,32 +1,57 @@
 <div class="container mt-5">
   <%= month_calendar(events: @matches, start_time: :date) do |date, matches| %>
+    <div class="calendar-day h-100">
       <%= date.day %>
-    <% matches.each do |match| %>
-      <div class="mini-card">
-        <% if match.date.past? %>
-          <div class="team-logo">
-            <%= image_tag "logo-vertical.png", alt: "Liverpool logo" %> <!-- Reemplaza con la imagen correcta -->
-          </div>
-          <div class="match-result">
-            <%= match.result %>
-          </div>
-          <div class="team-logo">
-           <%= image_tag "generic.png", alt: "Opponent logo" %> <!-- Reemplaza con la imagen correcta -->
-            <span class="team-name"><%= match.rival %></span>
-          </div>
-        <% else %>
-          <div class="team-logo">
-            <%= image_tag "logo-vertical.png", alt: "Liverpool logo" %> <!-- Reemplaza con la imagen correcta -->
-          </div>
-          <div class="match-vs">
-            VS
-          </div>
-          <div class="team-logo">
-            <%= image_tag "generic.png", alt: "Opponent logo" %>
-            <span class="team-name"><%= match.rival %></span> <!-- Reemplaza con la imagen correcta -->
+      <% matches.each do |match| %>
+        <%= link_to match_path(match), class: "mini-card-link d-flex justify-content-center" do %>
+          <div class="mini-card text-center">
+            <% if match.date.past? %>
+              <div class="card-info d-flex justify-content-center align-items-center">
+                <div class="row w-100">
+                  <div class="col-4 p-0">
+                    <%= image_tag "logo-vertical.png", alt: "Liverpool logo", class: "img-fluid team-logo" %>
+                  </div>
+                  <div class="col-4 p-0 d-flex justify-content-center align-items-center">
+                    <div class="match-result d-inline-block mx-2">
+                      <%= match.result %>
+                    </div>
+                  </div>
+                  <div class="col-4 p-0">
+                    <%= image_tag "generic.png", alt: "Opponent logo", class: "img-fluid team-logo" %>
+                    <div class="team-name mt-1">
+                      <%= match.rival %>
+                    </div>
+                  </div>
+
+                  </div>
+                </div>
+
+
+
+            <% else %>
+              <div class="card-info d-flex justify-content-center align-items-center">
+                <div class="row w-100">
+                  <div class="col-4 p-0">
+                    <%= image_tag "logo-vertical.png", alt: "Liverpool logo", class: "img-fluid team-logo" %>
+                  </div>
+                  <div class="col-4 p-0 d-flex justify-content-center align-items-center">
+                    <div class="match-result d-inline-block mx-2">
+                      VS
+                    </div>
+                  </div>
+                  <div class="col-4 p-0">
+                    <%= image_tag "generic.png", alt: "Opponent logo", class: "img-fluid team-logo" %>
+                    <div class="team-name mt-1">
+                      <%= match.rival %>
+                    </div>
+                  </div>
+
+                  </div>
+                </div>
+            <% end %>
           </div>
         <% end %>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   <% end %>
 </div>
