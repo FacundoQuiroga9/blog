@@ -87,3 +87,14 @@ tr.row-player:hover i {
 .btn-calendar > i{
   font-size: 2rem;
 }
+
+.jerseys-container {
+  text-align: center; // Centra la imagen si es más pequeña que el contenedor
+  margin-bottom: 20px; // Añade un margen en la parte inferior si es necesario
+}
+
+// Si la imagen contiene texto, asegúrate de que se vea bien en diferentes tamaños de pantalla
+.img-fluid {
+  max-width: 100%; // Asegúrate de que la imagen sea responsive
+  height: auto; // Mantiene la proporción de la imagen
+}
