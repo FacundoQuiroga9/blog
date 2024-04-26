@@ -1,4 +1,15 @@
 <div class="container mt-5">
+  <div class="row d-flex justify-content-between">
+    <div class="col">
+      <h1>Calendario</h1>
+    </div>
+    <div class="col d-flex justify-content-end">
+      <%= link_to 'Nuevo partido', new_match_path, class: 'btn btn-olsc my-3' %>
+    </div>
+
+
+  </div>
+
   <%= month_calendar(events: @matches, start_time: :date) do |date, matches| %>
     <div class="calendar-day h-100">
       <%= date.day %>

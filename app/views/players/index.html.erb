@@ -7,6 +7,7 @@
           <h2>Jugadores</h2>
         </div>
         <div class="col-2 text-right"> <!-- Alinea el contenido de la columna a la derecha -->
+
           <%= link_to 'Nuevo jugador', new_player_path, class: 'btn btn-olsc float-right' %> <!-- Botón flotante a la derecha -->
         </div>
       </div>
@@ -61,12 +62,14 @@
     </div>
     <div class="col-md-4">
       <h1 class="my-5">Últimos partidos</h1>
-      <div class="row mb-4">
-        <div class="col-8">
+      <div class="row mb-3">
+        <div class="col-8 d-flex align-items-center pages-controllers">
           <%= paginate @matches %>
         </div>
-        <div class="col-4">
-          <%= link_to 'Nuevo partido', new_match_path, class: 'btn btn-olsc' %>
+        <div class="col-4 d-flex justify-content-end align-items-center">
+          <%= link_to matches_path, class: "btn-calendar" do %>
+            <i class="fa fa-calendar"></i>
+          <% end %>
         </div>
       </div>
 
@@ -98,7 +101,6 @@
     </div>
   <% end %>
 <% end %>
-      <%= link_to 'Calendario', matches_path, class: 'btn btn-olsc' %>
     </div>
   </div>
 </div>
