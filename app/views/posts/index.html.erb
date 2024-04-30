@@ -11,7 +11,6 @@
         </div>
         <% end %>
       </div>
-
     </div>
     <div class="col-md-6">
       <%= form_with(url: posts_path, method: "get", local: true) do |form| %>
@@ -25,25 +24,28 @@
     </div>
   </div>
 
-
   <div class="row">
-    <% @posts.each do |post| %>
-      <div class="col-md-3 mb-4">
-        <div class="card">
-          <%= link_to post_path(post), class: "card-link" do %>
-            <% if post.image.attached? %>
-
-              <%= image_tag post.image.variant(resize_to_fill: [300, 200]), class: "card-img-top", alt: "Imagen de la publicación" %>
-            <% else %>
-
-              <%= image_tag 'img-placeholder.jpeg', class: "card-img-top img-placeholder", alt: "Imagen de marcador de posición" %>
+    <% if @posts.any? %>
+      <% @posts.each do |post| %>
+        <div class="col-md-3 mb-4">
+          <div class="card">
+            <%= link_to post_path(post), class: "card-link" do %>
+              <% if post.image.attached? %>
+                <%= image_tag post.image.variant(resize_to_fill: [300, 200]), class: "card-img-top", alt: "Imagen de la publicación" %>
+              <% else %>
+                <%= image_tag 'img-placeholder.jpeg', class: "card-img-top img-placeholder", alt: "Imagen de marcador de posición" %>
+              <% end %>
+              <div class="card-body">
+                <p class="card-text fw-bold fs-6"><%= post.title %></p>
+                <p class="card-info">Publicado por <%= link_to post.user.username, user_posts_user_path(post.user), class: "user-link" %></p>
+              </div>
             <% end %>
-            <div class="card-body">
-              <p class="card-text fw-bold fs-6"><%= post.title %></p>
-              <p class="card-info">Publicado por <%= link_to post.user.username, user_posts_user_path(post.user), class: "user-link" %></p>
-            </div>
-          <% end %>
+          </div>
         </div>
+      <% end %>
+    <% else %>
+      <div class="col-12">
+        <p class="text-center fs-2 p-5">No hay publicaciones relacionadas.</p>
       </div>
     <% end %>
   </div>
