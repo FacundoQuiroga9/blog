@@ -98,3 +98,13 @@ tr.row-player:hover i {
   max-width: 100%; // Asegúrate de que la imagen sea responsive
   height: auto; // Mantiene la proporción de la imagen
 }
+
+.btn-search{
+  border: 1px solid #027f5d;
+  color: #027f5d;
+}
+
+.btn-search:hover{
+  background-color: #027f5d;
+  color: white;
+}

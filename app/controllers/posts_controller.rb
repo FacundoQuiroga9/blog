@@ -5,7 +5,11 @@ class PostsController < ApplicationController
 
 
   def index
-    @posts = Post.order(created_at: :desc)
+    if params[:query].present?
+      @posts = Post.where("title ILIKE ?", "%#{params[:query]}%").order(created_at: :desc)
+    else
+      @posts = Post.order(created_at: :desc)
+    end
   end
 
 
