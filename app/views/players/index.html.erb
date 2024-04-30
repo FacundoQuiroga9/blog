@@ -12,6 +12,19 @@
         </div>
       </div>
       <div class="row">
+        <div class="col-md-12">
+          <%= form_with(url: players_path, method: :get, local: true, class: "search-form") do |form| %>
+            <div class="row mb-3">
+              <div class="col">
+                <%= form.text_field :query, placeholder: "Ingresa nombre del jugador", class: "form-control" %>
+              </div>
+              <div class="col">
+                <%= form.submit "Buscar", class: "btn btn-search" %>
+              </div>
+            </div>
+
+          <% end %>
+        </div>
         <div class="col-12">
           <table class="table players-table">
             <thead>
