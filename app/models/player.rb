@@ -2,9 +2,11 @@
 class Player < ApplicationRecord
   has_many :match_players, dependent: :destroy
   has_many :matches, through: :match_players
+  has_many :match_scorers, dependent: :destroy
   has_one_attached :photo
 
   validates :name, presence: true
+  validates :birthday, presence: true
 
   def update_statistics(matches)
     self.games = matches.count
