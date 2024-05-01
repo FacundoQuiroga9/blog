@@ -109,9 +109,8 @@ tr.row-player:hover i {
   color: white;
 }
 
-
-.right-col{
-  height: 800px;
-  position: sticky !important;
-  top: 0;
+.sticky-top {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 150px;
 }
