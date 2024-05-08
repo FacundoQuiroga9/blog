@@ -10,7 +10,7 @@
 
   </div>
 
-  <%= month_calendar(events: @matches, start_time: :date) do |date, matches| %>
+  <%= month_calendar(events: @matches, start_time: :date, param_name: :start_date) do |date, matches| %>
     <div class="calendar-day h-100">
       <%= date.day %>
       <% matches.each do |match| %>

@@ -1,6 +1,9 @@
-#body{
+#body, html{
   font-family: "Bebas Neue", sans-serif;
+  min-height: 100%;
 }
+
+
 .home-container{
   border-left: 1px solid #cecdcd;
   border-right: 1px solid #cecdcd;

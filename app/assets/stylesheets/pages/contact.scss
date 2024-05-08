@@ -1,0 +1,33 @@
+
+.contact-page {
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+.contact-form .form-group {
+  margin-bottom: 15px;
+}
+
+.contact-form .btn {
+  margin-top: 10px;
+}
+
+.social-media-container{
+  a{
+    text-decoration: none;
+    color: #E72326;
+    margin: 0 1rem;
+    i{
+      font-size: 2rem;
+
+    }
+  }
+  a:hover{
+    color: #9c0000;
+  }
+}
+@media (min-width: 768px) {
+  .contact-page .row {
+    justify-content: space-between;
+  }
+}

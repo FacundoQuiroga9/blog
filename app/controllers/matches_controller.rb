@@ -3,12 +3,17 @@ class MatchesController < ApplicationController
   before_action :set_match, only: %i[show destroy]
 
   def index
-    start_date = Date.today.beginning_of_month
-    end_date = Date.today.end_of_month
+    if params[:start_date].present?
+      start_date = Date.parse(params[:start_date]).beginning_of_month
+    else
+      start_date = Date.today.beginning_of_month
+    end
+
+    end_date = start_date.end_of_month
 
     @matches = Match.where(date: start_date..end_date)
-    puts @matches.inspect # Verifica los datos que se están pasando a la vista
   end
+
 
   def show
 

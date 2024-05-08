@@ -1,5 +1,43 @@
-.footer-container{
-  background-color: #e56464;
-  width: 100%;
-  height: 15rem;
+.footer {
+  margin-top: 2rem;
+  font-weight: bold;
+
+    .row {
+    height: 4rem;
+}
+
+  .first-row {
+    background-color: #00bfff;
+    a{
+      color: white;
+      text-decoration: none;
+      margin: 0 1rem;
+    }
+    a:hover{
+      color: rgb(228, 228, 228);
+    }
+  }
+
+  .second-row {
+    background-color: #ffffff;
+    a{
+      color: #ffda7b;
+      text-decoration: none;
+      margin: 0 1rem;
+      i{
+        font-size: 2rem;
+      }
+    }
+    a:hover{
+      color: #d7b359;
+    }
+  }
+
+  .third-row {
+    background-color: #00bfff;
+    color: white;
+    p{
+      margin: 0;
+    }
+  }
 }

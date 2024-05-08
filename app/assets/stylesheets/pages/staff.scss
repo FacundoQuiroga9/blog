@@ -1,34 +1,44 @@
-.container{
-  min-height: 100vh;
+.card-img-top {
+  width: 100%; // Asegura que la imagen cubra el ancho de la card
+  height: 250px; // Altura fija para todas las imágenes
+  object-fit: contain; // Muestra toda la imagen ajustándola dentro del contenedor
+  border-bottom: 1px solid #ccc; // Añade un borde para separar de la parte del texto
 }
-.card-member{
+
+// Reducción de espacio entre cards
+.card {
+  margin: 10px; // Reducción de margen para acercar las cards
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); // Sombra sutil para profundidad
+  transition: transform .3s ease-in-out; // Transición suave para el efecto hover
+
+  &:hover {
+    transform: scale(1.05); // Escalamiento para efecto hover
+  }
+}
+
+// Ajuste de los contenedores de las cards para mantener uniformidad
+.card-body, .card-footer {
+  padding: 15px; // Espacio interno consistente
+}
+
+.card-footer {
   display: flex;
-  padding: .5rem;
-  flex-direction: column;
-  justify-content: end;
-  height: 300px;
-  background-size: cover;
-  background-position: center;
-  background-color: #E72326;
-  text-shadow: 1px 1px 3px rgb(0, 0, 0);
-  border-radius: 5px;
+  justify-content: space-between; // Elementos alineados a cada extremo
+  align-items: center;
+  padding: 10px 15px;
 }
-.facundo{
-  background-image: url(asset_path('facundo.png'));
+
+// Botón de contacto y enlaces sociales
+.btn-contactar, .social-icons a {
+  margin: 0 5px; // Espacio horizontal entre elementos
 }
-.ariel{
-  background-image: url(asset_path('ariel.png'));
+
+.social-icons a {
+  font-size: 20px; // Tamaño de los iconos de redes sociales
+  color: $red; // Color primario para los íconos
+  text-decoration: none; // Elimina subrayado de los enlaces
 }
-.gabriel{
-  background-image: url(asset_path('random.png'));
-}
-.santiago{
-  background-image: url(asset_path('random.png'));
-}
-.kyran{
-  background-image: url(asset_path('random.png'));
-}
-.card-member h4, .card-member h6{
-  color: white;
-  user-select: none;
+
+.social-icons a:hover {
+  color: #9c0000; // Color al hacer hover sobre los íconos
 }

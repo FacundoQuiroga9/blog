@@ -1,15 +1,28 @@
 <div class="container">
   <h1 class="my-5">Staff</h1>
   <div class="row justify-content-center">
-    <% @staff_members.each do |member|%>
-    <div class="col-2 my-3">
-      <div class="card-member <%= "#{member[:class]}" %>">
-      <div class="card-member-info">
-        <h4><%= member[:name] %></h4>
-        <h6><%= member[:position] %></h6>
+    <% @staff_members.each do |member| %>
+      <div class="col-md-4 my-3">
+        <div class="card h-100">
+          <% if member[:image].present? %>
+            <%= image_tag member[:image], class: "card-img-top", alt: "#{member[:name]} photo" %>
+          <% else %>
+            <%= image_tag "random.png", class: "card-img-top", alt: "Default image" %>
+          <% end %>
+          <div class="card-body">
+            <h4 class="card-title"><%= member[:name] %></h4>
+            <h6 class="card-subtitle mb-2 text-muted"><%= member[:position] %></h6>
+          </div>
+          <div class="card-footer">
+            <%= mail_to member[:email], "Contactar", class: "btn btn-olsc" %>
+            <div class="social-icons">
+              <%= link_to "#", class: "fa fa-linkedin" do %> <% end %>
+              <%= link_to "#", class: "fa fa-twitter" do %> <% end %>
+              <%= link_to "#", class: "fa fa-facebook" do %> <% end %>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-    </div>
-  <% end %>
+    <% end %>
   </div>
 </div>
